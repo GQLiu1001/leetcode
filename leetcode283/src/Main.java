@@ -13,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
         int[] nums1 = new int[]{0, 1, 0, 3, 12};
         int[] nums2 = new int[]{0};
+
         moveZeroes(nums1);
         moveZeroes(nums2);
     }
@@ -31,5 +32,27 @@ public class Main {
         System.out.println("res = " + Arrays.toString(nums));
     }
 
+    public static void  moveZeroes1(int[] nums) {
+        //错误想法 防止数组越界，第二个指针放在i的后面
+        int j = 1;
 
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i] == 0 && nums[j] != 0){
+                int temp = nums[j];
+                nums[i+j] = 0;
+                nums[i] = temp;
+                j++;
+            }
+
+            if(nums[i]==0 && nums[j] == 0){
+                j++;
+                i--;
+            }
+
+            if(j == 5){
+                break;
+            }
+
+        }
+    }
 }
